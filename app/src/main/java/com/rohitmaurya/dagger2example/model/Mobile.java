@@ -5,17 +5,24 @@ import android.util.Log;
 import javax.inject.Inject;
 
 public class Mobile {
-    private Battery battery;
+    @Inject
+    Battery battery;
     private Processor processor;
 
     @Inject
-    public Mobile(Battery battery, Processor processor) {
-        this.battery = battery;
+    public Mobile(Processor processor) {
         this.processor = processor;
         Log.e("logIs", "Mobile");
     }
 
     public void run() {
         Log.e("logIs", "MobileRun");
+    }
+
+    // for method injection
+    @Inject
+    public void ConnectCharge(Charger charger) {
+        charger.setCharger();
+        Log.e("logIs", "ConnectCharge");
     }
 }
